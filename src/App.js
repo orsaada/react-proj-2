@@ -49,6 +49,12 @@ function App() {
     todoNameRef.current.value = null
   }
 
+  function handleClearTodos() {
+    const newTodos = todos.filter(todo => !todo.complete)
+    setTodos(newTodos)
+  }
+
+
   // the first element 'todos' is all the todos and the second is a function to update the todos.
   return (
     <>
@@ -56,7 +62,7 @@ function App() {
       {/* pass the todos to the todolist - it's called propes*/ }
       <input ref={todoNameRef} type="text" />
       <button onClick={handleAddTodo}>Add Todo</button>
-      <button>Clear Completed Todos</button>
+      <button onClick={handleClearTodos}>Clear Completed Todos</button>
       <div>{todos.filter(todo => !todo.complete).length} left to do</div>
     </>
   )
